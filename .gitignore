@@ -8,3 +8,5 @@
 # Vite env types
 vite-env.d.ts
 node_modules
+serviceAccountKey.json
+data-santri.json
