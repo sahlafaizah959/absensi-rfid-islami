@@ -170,7 +170,7 @@ export default function App() {
       if (status === 'Tepat Waktu') {
         text = `Masya Allah, ${name} tepat waktu!`;
       } else if (status === 'Terlambat') {
-        text = `Ayo ${name}, besok lebih pagi ya!`;
+        text = `Ayo ${name}, besok lebih cepat ya!`;
       } else {
         text = name;
       }
