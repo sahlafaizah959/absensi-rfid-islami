@@ -219,9 +219,12 @@ export default function App() {
     setIsLoading(true);
     setNotification(null);
 
+    // Mantra baru: Pastikan ID benar-benar bersih dari spasi/enter hantu tablet
+    const cleanId = id_kartu.trim();
+
     try {
-      // Query Firestore: collection "murid", document named after the RFID ID
-      const docRef = doc(db, 'murid', id_kartu);
+      // Sekarang kita cari ke database pakai cleanId (bukan id_kartu lagi)
+      const docRef = doc(db, 'murid', cleanId);
       const docSnap = await getDoc(docRef);
 
       if (!docSnap.exists()) {
@@ -234,9 +237,9 @@ export default function App() {
 
       const data = docSnap.data();
       const student: Student = {
-        id: id_kartu,
-        name: data.nama as string,       // Firestore field: "nama"
-        gender: data.gender as 'L' | 'P', // Firestore field: "gender"
+        id: cleanId, // Pakai cleanId di sini
+        name: data.nama as string,       
+        gender: data.gender as 'L' | 'P', 
       };
 
       // ── Double-tap guard: already scanned in this session? ──────────────
