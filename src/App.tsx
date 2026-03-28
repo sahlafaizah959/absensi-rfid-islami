@@ -228,7 +228,8 @@ export default function App() {
       const docSnap = await getDoc(docRef);
 
       if (!docSnap.exists()) {
-        setNotification('Kartu tidak terdaftar! ❌');
+        // Tambahkan variable cleanId di dalam pesan biar kita tahu nomor aslinya
+        setNotification(`ID: [${cleanId}] tidak ada di Database! ❌`);
         setLastScanned(null);
         setLastScanRecord(null);
         setTimeout(() => setNotification(null), 3000);
